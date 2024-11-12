@@ -1,0 +1,11 @@
+.wrapper {
+  display: flex;
+}
+
+.page {
+  background-color: var(--color-background-page);
+  color: var(--color-foreground-default);
+  min-height: var(--height-page);
+  width: auto;
+  flex-grow: 1;
+}

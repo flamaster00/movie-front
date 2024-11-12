@@ -1,0 +1,86 @@
+:root {
+  --color-background-page: rgb(21, 29, 44);
+  --color-background-surface1: rgb(27, 35, 48);
+  --color-background-surface2: rgb(38, 46, 61);
+  --color-background-surface3: rgb(51, 58, 72);
+  --color-background-surface4: rgb(69, 75, 89);
+  --color-background-surface5: rgb(69, 75, 89);
+  --color-background-disabled: rgba(181, 183, 192, 0.1);
+
+  --color-foreground-default: rgb(232, 232, 238);
+  --color-foreground-soft: rgb(181, 183, 192);
+  --color-foreground-muted: rgb(157, 161, 172);
+  --color-foreground-disabled: rgba(181, 183, 192, 0.5);
+
+  --color-bg-elevated-0: rgb(21, 29, 44);
+  --color-bg-elevated-1: rgb(27, 35, 48);
+  --color-bg-elevated-2: rgb(38, 46, 61);
+  --color-bg-elevated-3: rgb(51, 58, 72);
+  --color-bg-elevated-4: rgb(69, 75, 89);
+
+  --color-border-default: rgba(181, 183, 192, 0.5);
+  --color-border-soft: rgba(181, 183, 192, 0.25);
+  --color-border-muted: rgba(181, 183, 192, 0.15);
+
+  --color-neutral-default: rgb(181, 183, 192);
+  --color-neutral-soft: rgb(157, 161, 172);
+  --color-neutral-muted: rgb(121, 126, 139);
+  --color-neutral-hover: rgb(211, 212, 219);
+  --color-neutral-active: rgb(232, 232, 238);
+
+  --color-status-success-default: rgb(133, 229, 173);
+  --color-status-success-soft: rgb(96, 221, 148);
+  --color-status-success-hover: rgb(194, 242, 214);
+  --color-status-warning-default: rgb(254, 211, 136);
+  --color-status-warning-soft: rgb(254, 197, 100);
+  --color-status-warning-hover: rgb(255, 233, 195);
+  --color-status-error-default: rgb(255, 147, 147);
+  --color-status-error-soft: rgb(255, 114, 114);
+  --color-status-error-hover: rgb(255, 201, 201);
+  --color-status-info-default: rgb(143, 180, 255);
+  --color-status-info-soft: rgb(109, 158, 255);
+  --color-status-info-hover: rgb(199, 218, 255);
+
+  // # Размеры
+  --height-navbar: 50px;
+  --height-sidebar: calc(100vh - var(--height-navbar));
+  --height-page: calc(100vh - var(--height-navbar))
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #121212;
+    --foreground: #f4f4f4;
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
