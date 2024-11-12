@@ -1,18 +1,26 @@
-import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { StackList } from "@/components/StackList/StackList";
 import styles from "./index.module.scss";
-import { Navbar } from "@/components/Navbar/Navbar";
 
-export default function Home() {
+import type { ReactElement } from "react";
+import type { NextPageWithLayout } from "./_app";
+import RootLayout from "./layout";
+
+const Page: NextPageWithLayout = () => {
   return (
     <>
-    <Navbar />
-    <div className={styles.wrapper}>
-      <Sidebar />
-      <div className={styles.page}>
-        <StackList />
+      <div className={styles.wrapper}>
+        <div className={styles.page}>
+          <StackList />
+        </div>
       </div>
-    </div>
     </>
   );
-}
+};
+
+Page.getLayout = function getLayout(page: ReactElement) {
+  return (
+      <RootLayout>{page}</RootLayout>
+  );
+};
+
+export default Page;
