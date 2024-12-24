@@ -1,4 +1,4 @@
-export interface IMovie {
+export type TKPMovie = {
     kinopoiskId: number
     kinopoiskHDId: string
     imdbId: string

@@ -1,25 +1,53 @@
-import { StackList } from "@/components/StackList/StackList";
+'use client'
 import styles from "./index.module.scss";
 
-import type { ReactElement } from "react";
+import { memo, useEffect, useState, type ReactElement } from "react";
 import type { NextPageWithLayout } from "./_app";
 import RootLayout from "./layout";
+import { Button, ButtonShape, ButtonSize, ButtonVariant } from "@/shared/ui/Button/Button";
+import { Input } from "@/shared/ui/Input/Input";
+import SearchBar from "@/widgets/Navbar/SearchBar/SearchBar";
+import { CollectionPreview } from "@/widgets/CollectionPreview/CollectionPreview";
+import { TCollection } from "@/shared/types/CollectionTypes";
 
-const Page: NextPageWithLayout = () => {
+
+const Page: NextPageWithLayout = memo(() => {
+  const [collections, setCollections] = useState<TCollection[] | null>(null)
+
+  const getData = async () => {
+    try {
+
+      const response = await fetch('http://localhost:5000/api/collections/')
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`)
+      }
+      const json = await response.json()
+      console.log(json.rows[0])
+      setCollections((json.rows))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+
   return (
     <>
       <div className={styles.wrapper}>
         <div className={styles.page}>
-          <StackList />
+          hello
+          {collections && <CollectionPreview collection={collections[0]}/>} 
         </div>
       </div>
     </>
   );
-};
+});
 
 Page.getLayout = function getLayout(page: ReactElement) {
   return (
-      <RootLayout>{page}</RootLayout>
+    <RootLayout>{page}</RootLayout>
   );
 };
 

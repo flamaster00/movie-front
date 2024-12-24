@@ -1,4 +1,21 @@
 :root {
+  --font-family-main: "Montserrat", sans-serif;
+  --font-size-xs: 8px;
+  --font-line-xs: 16px;
+  --font-xs: var(--font-size-xs) / var(--font-line-xs) var(--font-family-main);
+  --font-size-s: 10px;
+  --font-line-s: 18px;
+  --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
+  --font-size-m: 16px;
+  --font-line-m: 24px;
+  --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
+  --font-size-l: 24px;
+  --font-line-l: 32px;
+  --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
+  --font-size-xl: 32px;
+  --font-line-xl: 40px;
+  --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
+
   --color-background-page: rgb(21, 29, 44);
   --color-background-surface1: rgb(27, 35, 48);
   --color-background-surface2: rgb(38, 46, 61);
@@ -44,7 +61,15 @@
   // # Размеры
   --height-navbar: 50px;
   --height-sidebar: calc(100vh - var(--height-navbar));
-  --height-page: calc(100vh - var(--height-navbar))
+  --height-page: calc(100vh - var(--height-navbar));
+
+  --border-radius-s: 0.5rem;
+  --border-radius-m: 1rem;
+  --border-radius-l: 1.5rem;
+  --border-radius-xl: 2rem;
+
+  --icon-size-16: 16px;
+  --icon-size-24: 24px;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -1,6 +1,6 @@
-import { Navbar } from '@/components/Navbar/Navbar'
+import { LoginForm } from '@/pages/auth/AuthForm/LoginForm.tsx/LoginForm'
 import styles from './Auth.module.scss'
-import { AuthForm } from '@/components/AuthForm/AuthForm'
+import { Navbar } from '@/widgets/Navbar/Navbar'
 
 export const Auth = () => {
 
@@ -9,7 +9,7 @@ export const Auth = () => {
     <>
       <Navbar />
       <main className={styles.wrapper}>
-        <AuthForm />
+        <LoginForm />
       </main>
     </>
   )

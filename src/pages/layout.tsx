@@ -1,6 +1,6 @@
-import { Navbar } from "@/components/Navbar/Navbar";
+import { Navbar } from "@/widgets/Navbar/Navbar";
+import StoreProvider from "./StoreProvider";
 
- 
 export default function RootLayout({
   children,
 }: {
@@ -8,8 +8,10 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <Navbar />
-      <main>{children}</main>
+      <StoreProvider>
+        <Navbar />
+        <main>{children}</main>
+      </StoreProvider>
     </>
   )
 }

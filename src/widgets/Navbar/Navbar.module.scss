@@ -1,0 +1,13 @@
+.Navbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  padding: 1rem 2rem;
+  background-color: var(--color-background-surface1);
+  color: var(--color-foreground-default);
+  height: var(--height-navbar);
+}
