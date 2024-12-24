@@ -2,8 +2,8 @@ import cn from 'classnames'
 import styles from './CollectionPreview.module.scss'
 import { TCollection } from '@/shared/types/CollectionTypes'
 import { AppLink } from '@/shared/ui/AppLink/AppLink'
-import { LikeButton } from '../LikeButton/LikeButton'
 import { Badge } from '@/shared/ui/Badge/Badge'
+import { LikeButton } from '@/widgets/LikeButton'
 
 type CollectionPreviewProps = {
   collection: TCollection

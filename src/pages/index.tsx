@@ -4,11 +4,8 @@ import styles from "./index.module.scss";
 import { memo, useEffect, useState, type ReactElement } from "react";
 import type { NextPageWithLayout } from "./_app";
 import RootLayout from "./layout";
-import { Button, ButtonShape, ButtonSize, ButtonVariant } from "@/shared/ui/Button/Button";
-import { Input } from "@/shared/ui/Input/Input";
-import SearchBar from "@/widgets/Navbar/SearchBar/SearchBar";
-import { CollectionPreview } from "@/widgets/CollectionPreview/CollectionPreview";
 import { TCollection } from "@/shared/types/CollectionTypes";
+import { CollectionPreview } from "@/widgets/CollectionPreview";
 
 
 const Page: NextPageWithLayout = memo(() => {

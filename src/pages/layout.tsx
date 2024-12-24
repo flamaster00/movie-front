@@ -1,4 +1,4 @@
-import { Navbar } from "@/widgets/Navbar/Navbar";
+import { Navbar } from "@/widgets/Navbar";
 import StoreProvider from "./StoreProvider";
 
 export default function RootLayout({
