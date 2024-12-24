@@ -1,14 +1,14 @@
 .CollectionPreview {
-    max-width: 30%;
     min-width: 300px;
+    border: 2px solid transparent;
+    border-radius: var(--border-radius-m);
 }
 .CollectionPreview:hover {
-    border: 2px solid var(--color-border-default);
-    border-radius: var(--border-radius-m);
+    border-color: var(--color-border-default);
+    transition: border-color 200ms ease-in-out;
 }
 
 .imgWrapper {
-    width: 100%;
     aspect-ratio: 16/9;
     overflow: hidden;
     position: relative;

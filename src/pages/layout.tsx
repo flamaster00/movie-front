@@ -1,5 +1,5 @@
+import StoreProvider from "@/shared/store/StoreProvider";
 import { Navbar } from "@/widgets/Navbar";
-import StoreProvider from "./StoreProvider";
 
 export default function RootLayout({
   children,

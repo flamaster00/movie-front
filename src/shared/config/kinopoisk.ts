@@ -1,0 +1,1 @@
+export const kinopoiskBaseUrl = "https://kinopoiskapiunofficial.tech";

@@ -5,8 +5,8 @@ import { memo, useEffect, useState, type ReactElement } from "react";
 import type { NextPageWithLayout } from "./_app";
 import RootLayout from "./layout";
 import { TCollection } from "@/shared/types/CollectionTypes";
-import { CollectionPreview } from "@/widgets/CollectionPreview";
-
+import { CollectionPreview } from "@/entities/collections";
+import { CollectionsList } from "@/widgets/CollectionsList";
 
 const Page: NextPageWithLayout = memo(() => {
   const [collections, setCollections] = useState<TCollection[] | null>(null)
@@ -35,7 +35,7 @@ const Page: NextPageWithLayout = memo(() => {
       <div className={styles.wrapper}>
         <div className={styles.page}>
           hello
-          {collections && <CollectionPreview collection={collections[0]}/>} 
+          {collections && <CollectionsList collectionsList={collections}/>} 
         </div>
       </div>
     </>
