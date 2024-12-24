@@ -1,7 +1,7 @@
 import styles from './Navbar.module.scss'
 import { AppLink } from '@/shared/ui/AppLink/AppLink'
 import { Button } from '@/shared/ui/Button/Button'
-import SearchBar from './SearchBar/SearchBar'
+import SearchBar from '../SearchBar/SearchBar'
 
 export const Navbar = () => {
   return (
