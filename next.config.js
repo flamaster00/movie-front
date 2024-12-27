@@ -28,4 +28,8 @@ module.exports = {
   },
 
   // ...other config
+  env: {
+    KINOPOISK_TOKEN: process.env.KINOPOISK_TOKEN,
+  },
+
 }

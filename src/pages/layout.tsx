@@ -1,5 +1,6 @@
 import StoreProvider from "@/shared/store/StoreProvider";
 import { Navbar } from "@/widgets/Navbar";
+import styles from './index.module.scss'
 
 export default function RootLayout({
   children,
@@ -10,7 +11,9 @@ export default function RootLayout({
     <>
       <StoreProvider>
         <Navbar />
-        <main>{children}</main>
+        <main className={styles.page}>
+          {children}
+        </main>
       </StoreProvider>
     </>
   )

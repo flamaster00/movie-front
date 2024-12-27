@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import styles from './CollectionsList.module.scss'
 import { TCollection } from '@/shared/types/CollectionTypes'
-import { CollectionPreview } from '@/entities/collections'
+import { CollectionPreview } from '@/entities/collection'
 
 type CollectionsListProps = {
     collectionsList: TCollection[]

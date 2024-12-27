@@ -34,8 +34,8 @@ export type TKPMovie = {
     type: string
     ratingMpaa: string
     ratingAgeLimits: string
-    countries: ICountry[]
-    genres: IGenre[]
+    countries: TCountry[]
+    genres: TGenre[]
     startYear: any
     endYear: any
     serial: boolean
@@ -46,11 +46,12 @@ export type TKPMovie = {
     lastSync: string
   }
   
-  export interface ICountry {
+  export type TCountry = {
     country: string
   }
   
-  export interface IGenre {
+  export type TGenre = {
     genre: string
   }
   
+export type TMovie = Pick<TKPMovie, 'kinopoiskId'>

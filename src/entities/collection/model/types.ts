@@ -1,4 +1,4 @@
-import { TMovie } from "./MovieTypes"
+import { TMovie } from "@/entities/movie"
 
 export type TCollection = {
     id: number, 
@@ -10,4 +10,13 @@ export type TCollection = {
     likes: number,
     userId: number,
     movies: TMovie[] | null
+}
+
+export type TGetAllCollectionsQuery = {
+    rows: number,
+    data: TCollection[]
+}
+
+export type TGetCollectionById = {
+    collection: TCollection
 }
