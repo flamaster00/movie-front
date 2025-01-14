@@ -1,6 +1,7 @@
 import cn from 'classnames'
 import React, { InputHTMLAttributes, memo } from 'react';
 import styles from './Input.module.scss'
+import { ChangeHandler } from 'react-hook-form';
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
 
@@ -20,9 +21,9 @@ export const Input = memo((props: TInputProps) => {
     ...otherProps
   } = props;
 
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange?.(e.target.value);
-  };
+    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        onChange?.(e.target.value);
+    };
 
   return (
       <input

@@ -7,7 +7,7 @@
 .loginInput {
     all: unset;
     border: 1px solid var(--color-border-default);
-    border-radius: 20px;
+    border-radius: var(--border-radius-s);
 
     height: 40px;
     width: 300px;
@@ -21,11 +21,15 @@
     justify-content: space-between;
 }
 
-.recover {
-    font-size: 10px;
-    text-decoration: underline;
-    cursor: pointer;
-    height: fit-content;
+// .recover {
+//     font-size: 10px;
+//     text-decoration: underline;
+//     cursor: pointer;
+//     height: fit-content;
+// }
+
+.buttons {
+    display: flex;
 }
 
 .submitInput {
@@ -33,13 +37,19 @@
     border: 1px solid var(--color-border-default);
     border-radius: 5px;
     cursor: pointer;
-    width: 50px;
-    height: 40px;
-    padding: 0 1rem;
-    align-self: flex-end;
+    padding: 0.5rem 1rem;
+    margin-left: auto;
+}
+
+.register {
+    font: var(--font-s);
+    text-decoration: underline;
 }
 
 .errorText {
     font-size: xx-small;
     color: red;
 }
+
+
+

@@ -1,9 +1,6 @@
 .wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - var(--height-navbar));
-    background-color: var(--color-background-page);
-    color: var(--color-foreground-default);
+    display: grid;
+    place-content: center;
+    height: var(--height-page);
 }
 

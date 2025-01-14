@@ -9,7 +9,7 @@ export const Navbar = () => {
       <AppLink href={'/'} className=''>Все коллекции</AppLink>
       <SearchBar />
       <AppLink href={'/create'}>Создать</AppLink>
-      <Button>Войти</Button>
+      <AppLink href={'/auth'}>Войти</AppLink>
     </nav>
   )
 }
