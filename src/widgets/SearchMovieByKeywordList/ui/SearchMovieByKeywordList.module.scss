@@ -1,0 +1,21 @@
+.SearchMovieByKeywordList {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    overflow: scroll;
+    padding: 1rem;
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--border-radius-m);
+}
+
+.movie {
+    cursor: pointer;
+    
+}
+
+.error {
+    background: var(--color-status-error-default);
+    padding: 1rem;
+    border-radius: var(--border-radius-s);
+    color: black;
+}

@@ -1,5 +1,5 @@
 import { kinopoiskApi } from "@/shared/api/kinopoiskApi";
-import { TKPMovie } from "../model/types";
+import { TKPMovie, TMovieByKeyword, TSearchByKeywordResponse } from "../model/types";
 
 const movieApi = kinopoiskApi.injectEndpoints({
     endpoints: (build) => ({
@@ -8,8 +8,12 @@ const movieApi = kinopoiskApi.injectEndpoints({
                 url: `/api/v2.2/films/${id}`
             }),
         }),
-        
+        getMovieByKeyword: build.query<TSearchByKeywordResponse, string>({
+            query: (keyword) => ({
+                url: `/api/v2.1/films/search-by-keyword?keyword=${keyword}&page=1`
+            }),
+        }),
     }),
 });
 
-export const {useGetMovieByIdQuery} = movieApi
+export const {useGetMovieByIdQuery, useGetMovieByKeywordQuery} = movieApi

@@ -1,8 +1,13 @@
 .Input {
     all: unset;
+    box-sizing: border-box;
     padding: 0.5rem 1rem;
     color: var(--foreground);
     background: var(--color-background-surface2);
     border: 1px solid var(--color-border-default);
     border-radius: var(--border-radius-s);
+}
+
+.fullWidth {
+    width: 100%;
 }

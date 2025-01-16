@@ -10,6 +10,7 @@ export type TInputProps = {
   value?: string;
   onChange?: (value: string) => void;
   type?: string;
+  fullWidth?: boolean;
 } & HTMLInputProps
 
 export const Input = memo((props: TInputProps) => {
@@ -17,6 +18,7 @@ export const Input = memo((props: TInputProps) => {
     className,
     value,
     onChange,
+    fullWidth,
     type = 'text',
     ...otherProps
   } = props;
@@ -27,7 +29,7 @@ export const Input = memo((props: TInputProps) => {
 
   return (
       <input
-        className={cn(styles.Input, className)}
+        className={cn(styles.Input, {[styles.fullWidth]: fullWidth}, className)}
         type={type}
         value={value}
         onChange={onChangeHandler}

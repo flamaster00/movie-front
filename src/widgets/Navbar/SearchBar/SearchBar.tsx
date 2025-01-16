@@ -6,14 +6,14 @@ import Form from 'next/form'
 import { Button, ButtonShape, ButtonVariant } from '@/shared/ui/Button/Button'
 import IconClose from '@/shared/static/icons/icon_close.svg'
 import IconSearch from '@/shared/static/icons/icon_search.svg'
-import { ChangeEvent, FormEvent, MouseEventHandler, useCallback, useState } from 'react'
+import { MouseEventHandler, useCallback, useState } from 'react'
 
 type TSearchBarProps = {
-
+  placeholder: string
 }
 
 const SearchBar = (props: TSearchBarProps) => {
-  
+  const {placeholder} = props
 
   const [searchValue, setSearchValue] = useState<string>('')
 
@@ -45,6 +45,7 @@ const SearchBar = (props: TSearchBarProps) => {
         type="search"
         name='search'
         id='SearchBar'
+        placeholder={placeholder}
         className={cn(styles.input)}
         value={searchValue}
         onChange={onChangeHandler}

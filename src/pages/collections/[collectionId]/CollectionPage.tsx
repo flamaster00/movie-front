@@ -2,9 +2,6 @@
 import { Collection } from '@/entities/collection/Collection/ui/Collection'
 import styles from './CollectionPage.module.scss'
 import { useParams } from 'next/navigation'
-import { useGetMoviesInCollectionQuery } from '@/entities/collection/api/collectionQuery'
-import { useEffect } from 'react'
-import { backendBaseUrl } from '@/shared/config/backend'
 import { MoviesInCollectionList } from '@/widgets/MoviesInCollectionList'
 
 type CollectionPage = {

@@ -1,3 +1,7 @@
+.CreateNewCollection {
+
+}
+
 .Collection {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -5,7 +9,7 @@
     grid-template-areas: 
     'image image image'
     'author views likes'
-    'title title title'
+    'name name name'
     'description description description';
     column-gap: 1rem;
     row-gap: 1rem;
@@ -31,7 +35,7 @@
 }
 
 .title {
-    grid-area: title;
+    grid-area: name;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     line-clamp: 2;
@@ -49,11 +53,17 @@
     overflow: hidden;
 }
 
-.likes {
-    grid-area: likes;
+.titleInput {
+
 }
 
-.views {
-    grid-area: views;
+.descriptionTextarea {
+    word-break: break-word;
+    width: 100%;
+    height: fit-content;
+    background: none;
+    border: none;
+    font: var(--font-m);
+    padding: 0.5rem 1rem;
+    resize: none;
 }
-

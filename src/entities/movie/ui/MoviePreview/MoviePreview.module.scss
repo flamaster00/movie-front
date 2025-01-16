@@ -6,8 +6,12 @@
     margin-top: 0.25rem;
 }
 
-.nameOriginal, .nameEn {
+.nameOriginal, .nameEn, .year {
     color: var(--color-foreground-muted);
+}
+
+.nameRu {
+    font: var(--font-l);
 }
 
 .imageWrapper {

@@ -15,7 +15,12 @@ export const Collection = (props: CollectionProps) => {
     const { className, id } = props
     const [collection, setCollection] = useState<TCollection | null>(null);
 
-    const imgUrl = backendBaseUrl + '/' + collection?.img
+    let imgUrl
+    if (collection?.img) {
+        imgUrl = backendBaseUrl + '/' + collection?.img
+    } else {
+        imgUrl = backendBaseUrl + '/default_img.png'
+    }
     const getData = async () => {
         try {
 
@@ -46,7 +51,17 @@ export const Collection = (props: CollectionProps) => {
                     className={styles.img}
                 />
             </div>
-            <div className={cn(styles.name)}>
+            <div className={cn(styles.author)}>
+
+                <p>Автор</p>
+            </div>
+            <Badge className={cn(styles.views, className)}>
+                Views: {collection?.views}
+            </Badge>
+            <Badge className={cn(styles.likes, className)}>
+                Likes: {collection?.likes}
+            </Badge>
+            <div className={cn(styles.title)}>
 
                 <p >{collection?.name}</p>
             </div>
@@ -55,12 +70,7 @@ export const Collection = (props: CollectionProps) => {
                 <p >{collection?.description}</p>
             </div>
             
-            <Badge className={cn(styles.views, className)}>
-                Views: {collection?.views}
-            </Badge>
-            <Badge className={cn(styles.likes, className)}>
-                Likes: {collection?.likes}
-            </Badge>
+            
         </div>
     )
 }

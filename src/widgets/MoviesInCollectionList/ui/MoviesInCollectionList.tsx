@@ -10,13 +10,6 @@ type MoviesInCollectionListProps = {
     id: string
 }
 
-type Data = {
-    count: number
-    rows: TMovie[] | []
-}
-
-
-
 export const MoviesInCollectionList = (props: MoviesInCollectionListProps) => {
     const { className, id } = props
     const [moviesId, setMoviesId] = useState<TMovie[] | []>([])
@@ -25,7 +18,7 @@ export const MoviesInCollectionList = (props: MoviesInCollectionListProps) => {
         try {
             const response = await fetch(`${backendBaseUrl}/api/movies/${id}`)
             const data = await response.json()
-            setMoviesId(data.rows)            
+            setMoviesId(data.rows)
             return data
         } catch (error) {
             console.log(error)
@@ -33,7 +26,7 @@ export const MoviesInCollectionList = (props: MoviesInCollectionListProps) => {
     }
 
     const list = moviesId.map(el => (
-        <MoviePreview id={el.kinopoiskId} key={el.kinopoiskId}/>
+        <MoviePreview id={el.kinopoiskId} key={el.kinopoiskId} />
     ))
 
     useEffect(() => {
