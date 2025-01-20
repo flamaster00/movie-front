@@ -1,7 +1,7 @@
-import cn from 'classnames'
 import styles from './CreateNewCollection.module.scss'
+import cn from 'classnames'
 import { backendBaseUrl } from '@/shared/config/backend'
-import { Input } from '@/shared/ui/Input/Input'
+import { Button, ButtonVariant } from '@/shared/ui/Button/Button'
 
 type CreateNewCollectionProps = {
   className?: string
@@ -17,22 +17,30 @@ export const CreateNewCollection = (props: CreateNewCollectionProps) => {
         className={cn(styles.Collection, className)}
       >
         <div className={styles.image}>
-          {/* <input type="file"/> */}
           <img
             src={`${backendBaseUrl}/default_img.png`}
             alt='Изображение коллекции'
             className={styles.img}
           />
+          <input type="file" className={styles.fileInput} />
         </div>
         <div className={cn(styles.author)}>
           <p>Автор</p>
         </div>
         <div className={cn(styles.title)}>
-          <Input type='text' className={cn(styles.titleInput)} placeholder='Название' fullWidth/>
+          <textarea className={cn(styles.titleTextarea)} placeholder='Название' rows={3} />
         </div>
         <div className={cn(styles.description)}>
-          <textarea className={cn(styles.descriptionTextarea)} placeholder='Описание'/>
+          <textarea className={cn(styles.descriptionTextarea)} placeholder='Описание' rows={6} />
         </div>
+      </div>
+      <div className={styles.publish}>
+        <label htmlFor="publish">Опубликовать коллекцию</label>
+        <input type="checkbox" name="publish" id="publish" />
+      </div>
+      <div className={styles.submit}>
+        <Button className={styles.cancel} variant={ButtonVariant.CLEAR}>Отменить</Button>
+        <Button variant={ButtonVariant.OUTLINED_BG}>Сохранить</Button>
       </div>
     </form>
   )

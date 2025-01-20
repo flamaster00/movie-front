@@ -1,6 +1,7 @@
+import styles from './index.module.scss'
+
 import StoreProvider from "@/shared/store/StoreProvider";
 import { Navbar } from "@/widgets/Navbar";
-import styles from './index.module.scss'
 
 export default function RootLayout({
   children,

@@ -14,8 +14,8 @@ export const CreateCollectionPage = (props: CreateCollectionPageProps) => {
 
   return (
     <main className={cn(styles.CreateCollectionPage, className)}>
-      <CreateNewCollection />
-      <AddMovieToCollection />
+      <CreateNewCollection className={styles.form}/>
+      <AddMovieToCollection className={styles.list}/>
     </main>
   )
 }

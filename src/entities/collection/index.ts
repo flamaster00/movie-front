@@ -1,5 +1,20 @@
-export { CollectionPreview } from "./ui/CollectionPreview/CollectionPreview";
+import {CollectionPreview} from './ui/CollectionPreview/CollectionPreview';
+import {Collection} from './Collection/ui/Collection';
 
-export { useGetAllCollectionsQuery } from "./api/collectionQuery";
 
-export type { TCollection } from './model/types'
+import {
+    useGetAllCollectionsQuery,
+    useGetCollectionByIdQuery,
+    useGetMoviesInCollectionQuery
+} from "./api/collectionQuery";
+
+import type { TCollection } from './model/types'
+
+export {
+    Collection,
+    CollectionPreview,
+    useGetAllCollectionsQuery,
+    useGetCollectionByIdQuery,
+    useGetMoviesInCollectionQuery,
+    TCollection,
+}

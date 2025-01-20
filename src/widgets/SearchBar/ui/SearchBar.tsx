@@ -2,38 +2,33 @@
 import cn from 'classnames'
 import styles from './SearchBar.module.scss'
 import { Input } from '@/shared/ui/Input/Input'
-import Form from 'next/form'
 import { Button, ButtonShape, ButtonVariant } from '@/shared/ui/Button/Button'
 import IconClose from '@/shared/static/icons/icon_close.svg'
 import IconSearch from '@/shared/static/icons/icon_search.svg'
-import { MouseEventHandler, useCallback, useState } from 'react'
+import { InputHTMLAttributes, MouseEventHandler, useCallback, useState } from 'react'
+import classNames from 'classnames'
+
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
 
 type TSearchBarProps = {
-  placeholder: string
-}
+  className?: string,
+  placeholder?: string,
+  value?: string,
+  onChange?: (title: string) => void
+  clear?: () => void
+} & HTMLInputProps
 
-const SearchBar = (props: TSearchBarProps) => {
-  const {placeholder} = props
+export const SearchBar = (props: TSearchBarProps) => {
+  const { placeholder, value, onChange, clear, className, ...otherProps } = props
 
-  const [searchValue, setSearchValue] = useState<string>('')
-
-  const onChangeHandler = useCallback((value: string) => {
-    console.log(value)
-    setSearchValue(value)
-  }, [])
-
-  const clearInput = useCallback(() => {
-    setSearchValue('')
-  }, [])
+  // const [searchValue, setSearchValue] = useState<string>('')
 
   const onclick: MouseEventHandler = (e) => {
     e.preventDefault()
- 
   }
 
   return (
-    <Form action={''} className={cn(styles.SearchBar)}>
-
+    <div className={cn(styles.SearchBar, className)}>
       <label
         htmlFor='SearchBar'
         className={styles.visuallyHidden}
@@ -44,18 +39,18 @@ const SearchBar = (props: TSearchBarProps) => {
       <Input
         type="search"
         name='search'
-        id='SearchBar'
         placeholder={placeholder}
         className={cn(styles.input)}
-        value={searchValue}
-        onChange={onChangeHandler}
+        value={value}
+        onChange={onChange}
+        {...otherProps}
       />
 
-      {searchValue && <Button
+      {value && <Button
         className={cn(styles.iconButton, styles.clearIcon)}
         variant={ButtonVariant.CLEAR}
         shape={ButtonShape.ICON}
-        onClick={clearInput}
+        onClick={clear}
       >
         <IconClose className={styles.icon} />
       </Button>}
@@ -67,11 +62,9 @@ const SearchBar = (props: TSearchBarProps) => {
         variant={ButtonVariant.CLEAR}
         shape={ButtonShape.ICON}
       >
-        <IconSearch className={styles.icon}/>
+        <IconSearch className={styles.icon} />
       </Button>
-
-    </Form>
+    </div>
   )
 }
 
-export default SearchBar

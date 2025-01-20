@@ -1,7 +1,7 @@
-import type { ReactElement, ReactNode } from 'react'
+import { StrictMode, type ReactElement, type ReactNode } from 'react'
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
-import '@/app/styles.scss';
+import '@/app/styles/styles.scss';
 import RootLayout from './layout';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
@@ -15,8 +15,10 @@ type AppPropsWithLayout = AppProps & {
 export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
-    <RootLayout>
-      <Component {...pageProps} />
-    </RootLayout>
+    <StrictMode>
+      <RootLayout>
+        <Component {...pageProps} />
+      </RootLayout>
+    </StrictMode>
   )
 }

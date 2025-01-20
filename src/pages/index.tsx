@@ -4,7 +4,6 @@ import { memo, useEffect, useState, type ReactElement } from "react";
 import type { NextPageWithLayout } from "./_app";
 import RootLayout from "./layout";
 import { CollectionsList } from "@/widgets/CollectionsList";
-import styles from "./index.module.scss";
 import { TCollection } from "@/entities/collection";
 
 const Page: NextPageWithLayout = memo(() => {

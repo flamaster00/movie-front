@@ -1,3 +1,10 @@
 .AddMovieToCollection {
-    
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.search {
+    margin-right: auto;
 }

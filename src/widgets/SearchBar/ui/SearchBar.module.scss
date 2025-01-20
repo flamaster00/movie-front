@@ -1,9 +1,11 @@
 .SearchBar {
     position: relative;
+    min-width: 200px;
 }
 
 Input.input {
     padding-right: calc(0.5rem + 24px + 24px + 0.2rem);
+    width: 100%;
 }
 
 .iconButton{

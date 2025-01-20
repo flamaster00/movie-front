@@ -1,8 +1,8 @@
 'use client'
-import { Collection } from '@/entities/collection/Collection/ui/Collection'
 import styles from './CollectionPage.module.scss'
 import { useParams } from 'next/navigation'
 import { MoviesInCollectionList } from '@/widgets/MoviesInCollectionList'
+import { Collection } from '@/entities/collection'
 
 type CollectionPage = {
     
