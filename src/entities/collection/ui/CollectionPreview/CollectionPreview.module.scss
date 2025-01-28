@@ -30,9 +30,17 @@
     top: 3.5rem;
 }
 
+.likes, .views {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    user-select: none;
+}
+
 .likeBtn {
     right: 0.5rem;
     top: 0.5rem;
+    fill: var(--foreground);
 }
 
 .imageWrapper {
@@ -57,4 +65,10 @@
 .name {
     padding: 0.5rem 0.5rem;
     @include clamp-2-lines;
+}
+
+.icon {
+    width: 1rem;
+    height: 1rem;
+    fill: var(--foreground);
 }

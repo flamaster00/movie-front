@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react'
 import { backendBaseUrl } from '@/shared/config/backend'
 import { Badge } from '@/shared/ui/Badge/Badge'
 import { TCollection } from '../../model/types'
+import { useGetCollectionByIdQuery } from '../../api/collectionQuery'
+import { Loader } from '@/shared/ui/Loader/Loader'
 
 type CollectionProps = {
     className?: string
@@ -13,8 +15,14 @@ type CollectionProps = {
 
 export const Collection = (props: CollectionProps) => {
     const { className, id } = props
-    const [collection, setCollection] = useState<TCollection | null>(null);
 
+    const { isLoading, isError, data: collection } = useGetCollectionByIdQuery(Number(id))
+
+    if (isLoading) return <Loader />
+
+    if (isError) return <p>Ошибка загрузки коллекции</p>
+
+    if (!collection) return <p>Коллекция не найдена</p>
 
     let imgUrl
     if (collection?.image) {
@@ -22,23 +30,6 @@ export const Collection = (props: CollectionProps) => {
     } else {
         imgUrl = backendBaseUrl + '/default_img.png'
     }
-    const getCollection = async () => {
-        try {
-
-            const response = await fetch(`http://localhost:5000/api/collections/${id}`)
-            if (!response.ok) {
-                throw new Error(`Response status: ${response.status}`)
-            }
-            const json = await response.json()
-            setCollection(json)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    useEffect(() => {
-        getCollection()
-    }, [])
 
     return (
         <div
@@ -53,25 +44,26 @@ export const Collection = (props: CollectionProps) => {
                     />
                 </div>
             </div>
-            <div className={cn(styles.author)}>
 
+            <div className={cn(styles.author)}>
                 <p>{collection?.user.username}</p>
             </div>
-            <Badge className={cn(styles.views, className)}>
+
+            {/* <Badge className={cn(styles.views, className)}>
                 Views: {collection?.views}
             </Badge>
+
             <Badge className={cn(styles.likes, className)}>
                 Likes: {collection?.likes}
-            </Badge>
+            </Badge> */}
+
             <div className={cn(styles.title)}>
-
-                <p >{collection?.title}</p>
+                <p>{collection?.title}</p>
             </div>
+
             <div className={cn(styles.description)}>
-
-                <p >{collection?.description}</p>
+                <p>{collection?.description}</p>
             </div>
-
 
         </div>
     )

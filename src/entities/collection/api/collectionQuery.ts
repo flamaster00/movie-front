@@ -1,22 +1,21 @@
 import { backendApi } from "@/shared/api/backendAPI";
-import { TGetAllCollectionsQuery, TGetCollectionById } from "../model/types";
+import { TCollection, TGetAllCollectionsQuery, TGetCollectionById } from "../model/types";
 
 const collectionApi = backendApi.injectEndpoints({
     endpoints: (build) => ({
-        getAllCollections: build.query<TGetAllCollectionsQuery, null>({
+        getAllCollections: build.query<TGetAllCollectionsQuery, void>({
             query: () => ({
-                url: '/api/collections'
+                url: '/collections'
             }),
         }),
 
-        getCollectionById: build.query<TGetCollectionById, string>({
+        getCollectionById: build.query<TCollection, TCollection['id']>({
             query: (id) => ({
-                url: `/api/collections/${id}`
+                url: `/collections/${id}`
             })
         }),
-
-        
     }),
+    overrideExisting: true
 });
 
-export const {useGetAllCollectionsQuery, useGetCollectionByIdQuery} = collectionApi
+export const { useGetAllCollectionsQuery, useGetCollectionByIdQuery } = collectionApi
