@@ -3,21 +3,20 @@ import { Button, ButtonShape, ButtonVariant } from '@/shared/ui/Button/Button'
 import cn from 'classnames'
 import styles from './LoginForm.module.scss'
 import React, { useEffect, useState } from 'react'
-import { backendBaseUrl } from '@/shared/config/backend'
-import { LOCALSTORAGE_USER_TOKEN } from "@/shared/consts/consts"
 import { useRouter } from "next/navigation"
+import { login, registration, TRegistrationRequest, userActions } from "@/entities/user"
+import { useAppDispatch } from "@/app/store/hooks"
 
-type Inputs = {
-    [email: string]: string
-    password: string
-    username: string
-}
+// TODO refactor to register and login
+type Inputs = TRegistrationRequest
 
 type LoginFormProps = {
     className?: string,
 }
 
 export const LoginForm = (props: LoginFormProps) => {
+
+    const dispatch = useAppDispatch()
 
     const { className } = props
     const [isSignUp, setIsSugnUp] = useState(false)
@@ -34,52 +33,16 @@ export const LoginForm = (props: LoginFormProps) => {
     })
 
     const onSignUpSubmit: SubmitHandler<Inputs> = async (data) => {
-        console.log(data, typeof data)
-        const formData = new FormData()
-
-        for (const key in data) {
-            formData.append(key, data[key])
-        }
-        try {
-            const response = await fetch(`${backendBaseUrl}/api/user/registration`,
-                {
-                    method: 'POST',
-                    body: formData
-                })
-
-            const user = await response.json();
-            localStorage.setItem(LOCALSTORAGE_USER_TOKEN, user.token)
-            // TODO добавить сообщение об успехе
-            router.push('/')
-
-        } catch (error) {
-            console.log(error);
-
-        }
+        await registration(data)
+        // router.push('/')
     }
 
     const onSignInSubmit: SubmitHandler<Inputs> = async (data) => {
-        console.log(data, typeof data)
-        const formData = new FormData()
-
-        for (const key in data) {
-            formData.append(key, data[key])
-        }
-        try {
-            const response = await fetch(`${backendBaseUrl}/api/user/login`,
-                {
-                    method: 'POST',
-                    body: formData
-                })
-
-            const user = await response.json();
-            localStorage.setItem(LOCALSTORAGE_USER_TOKEN, user.token)
-            router.push('/')
-
-        } catch (error) {
-            console.log(error);
-
-        }
+        const user = await login(data)
+        
+        if (!user) return
+        dispatch(userActions.setAuthData(user))
+        // router.push('/')
     }
 
     const switchLoginOrRegisterHandler = () => {

@@ -77,4 +77,6 @@ export type TGenre = {
   genre: string
 }
 
-export type TMovie = Pick<TKPMovie, 'kinopoiskId'>
+export type TMovieId = TKPMovie['kinopoiskId'] | TMovieByKeyword['filmId']
+
+export type TMoviesInCollection = TMovieId[]

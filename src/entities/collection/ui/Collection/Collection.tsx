@@ -15,13 +15,14 @@ export const Collection = (props: CollectionProps) => {
     const { className, id } = props
     const [collection, setCollection] = useState<TCollection | null>(null);
 
+
     let imgUrl
-    if (collection?.img) {
-        imgUrl = backendBaseUrl + '/' + collection?.img
+    if (collection?.image) {
+        imgUrl = backendBaseUrl + '/' + collection?.image
     } else {
         imgUrl = backendBaseUrl + '/default_img.png'
     }
-    const getData = async () => {
+    const getCollection = async () => {
         try {
 
             const response = await fetch(`http://localhost:5000/api/collections/${id}`)
@@ -30,14 +31,13 @@ export const Collection = (props: CollectionProps) => {
             }
             const json = await response.json()
             setCollection(json)
-            console.log(json);
         } catch (error) {
             console.log(error)
         }
     }
 
     useEffect(() => {
-        getData()
+        getCollection()
     }, [])
 
     return (
@@ -45,15 +45,17 @@ export const Collection = (props: CollectionProps) => {
             className={cn(styles.Collection, className)}
         >
             <div className={styles.image}>
-                <img
-                    src={imgUrl}
-                    alt={collection?.name}
-                    className={styles.img}
-                />
+                <div className={styles.imageWrapper}>
+                    <img
+                        src={imgUrl}
+                        alt={collection?.title}
+                        className={styles.img}
+                    />
+                </div>
             </div>
             <div className={cn(styles.author)}>
 
-                <p>Автор</p>
+                <p>{collection?.user.username}</p>
             </div>
             <Badge className={cn(styles.views, className)}>
                 Views: {collection?.views}
@@ -63,14 +65,14 @@ export const Collection = (props: CollectionProps) => {
             </Badge>
             <div className={cn(styles.title)}>
 
-                <p >{collection?.name}</p>
+                <p >{collection?.title}</p>
             </div>
             <div className={cn(styles.description)}>
 
                 <p >{collection?.description}</p>
             </div>
-            
-            
+
+
         </div>
     )
 }

@@ -10,7 +10,7 @@
     transition: border-color 200ms ease-in-out;
 }
 
-.imgWrapper {
+.card {
     aspect-ratio: 16/9;
     overflow: hidden;
     position: relative;
@@ -35,7 +35,16 @@
     top: 0.5rem;
 }
 
-.image {
+.imageWrapper {
+    grid-area: image;
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--border-radius-m);
+    background-color: var(--color-background-disabled);
+}
+
+.img {
     width: 100%;
    border-radius: var(--border-radius-m);
 }

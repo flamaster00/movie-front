@@ -1,10 +1,12 @@
+import { userReducer } from '@/entities/user'
+import { backendApi } from '@/shared/api/backendAPI'
+import { kinopoiskApi } from '@/shared/api/kinopoiskApi'
 import { configureStore } from '@reduxjs/toolkit'
-import { backendApi } from '../api/backendAPI'
-import { kinopoiskApi } from '../api/kinopoiskApi'
 
 export const makeStore = () => {
     return configureStore({
         reducer: {
+          user: userReducer,
           [backendApi.reducerPath]: backendApi.reducer,
           [kinopoiskApi.reducerPath]: kinopoiskApi.reducer
         },

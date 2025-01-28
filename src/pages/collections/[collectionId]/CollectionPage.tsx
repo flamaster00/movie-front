@@ -13,7 +13,6 @@ export const CollectionPage = (props: CollectionPage) => {
     // TODO сделать обработку undefined и массива
     const id = params?.collectionId as string
     
-    console.log(id)
     const {} = props
 
     return (

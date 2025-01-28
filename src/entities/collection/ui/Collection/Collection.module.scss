@@ -16,14 +16,20 @@
 .image {
     grid-area: image;
     width: 100%;
+    
+}
+.imageWrapper {
+    grid-area: image;
+    width: 100%;
+    aspect-ratio: 16/9;
     overflow: hidden;
+    border-radius: var(--border-radius-xl);
+    background-color: var(--color-background-disabled);
 }
 
 .img {
-    aspect-ratio: 16/9;
-    max-height: 100%;
     max-width: 100%;
-    border-radius: var(--border-radius-xl);
+    object-fit: contain;
 }
 
 .author {

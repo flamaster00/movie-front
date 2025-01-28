@@ -1,16 +1,19 @@
-import { TMovie } from "@/entities/movie"
+import { TMoviesInCollection } from "@/entities/movie"
+import { TUser } from "@/entities/user"
 
 export type TCollection = {
     id: number, 
     published: boolean,
-    name: string,
+    title: string,
     description: string,
-    img: File,
+    image: File,
     views: number,
     likes: number,
-    userId: number,
-    movies: TMovie[] | null
+    user: TUser,
+    movies?: TMoviesInCollection
 }
+
+export type TNewCollection = Omit<TCollection, 'id' | 'views' |'likes' >
 
 export type TGetAllCollectionsQuery = {
     rows: number,

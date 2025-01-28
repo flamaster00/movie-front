@@ -1,5 +1,4 @@
 import {CollectionPreview} from './ui/CollectionPreview/CollectionPreview';
-import {Collection} from './Collection/ui/Collection';
 
 
 import {
@@ -8,7 +7,8 @@ import {
     useGetMoviesInCollectionQuery
 } from "./api/collectionQuery";
 
-import type { TCollection } from './model/types'
+import type { TCollection, TNewCollection, TGetCollectionById, TGetAllCollectionsQuery } from './model/types'
+import { Collection } from './ui/Collection/Collection';
 
 export {
     Collection,
@@ -17,4 +17,7 @@ export {
     useGetCollectionByIdQuery,
     useGetMoviesInCollectionQuery,
     TCollection,
+    TNewCollection, 
+    TGetCollectionById,
+    TGetAllCollectionsQuery
 }

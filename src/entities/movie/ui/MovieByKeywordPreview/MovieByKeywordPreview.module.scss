@@ -2,12 +2,12 @@
 
 .MovieByKeywordPreview {
     padding: 0.5rem;
-    width: calc(200px + 1rem);
 }
 
 .nameEn,
 .nameRu,
 .year {
+    max-width: 200px;
     margin-top: 0.25rem;
     text-align: start;
 }
@@ -30,6 +30,7 @@
     width: 200px;
     height: 300px;
     position: relative;
+    align-self: center;
 }
 
 .ratingKP {

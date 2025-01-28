@@ -1,21 +1,28 @@
+import { useAppDispatch } from '@/app/store/hooks';
 import styles from './index.module.scss'
 
-import StoreProvider from "@/shared/store/StoreProvider";
 import { Navbar } from "@/widgets/Navbar";
+import { useEffect } from 'react';
+import { userActions } from '@/entities/user';
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(userActions.initAuthData())
+  }, [])
+
   return (
     <>
-      <StoreProvider>
         <Navbar />
-        <main className={styles.page}>
+        <div className={styles.page}>
           {children}
-        </main>
-      </StoreProvider>
+        </div>
     </>
   )
 }

@@ -9,7 +9,7 @@ import { TCollection } from "@/entities/collection";
 const Page: NextPageWithLayout = memo(() => {
   const [collections, setCollections] = useState<TCollection[] | null>(null)
 
-  const getData = async () => {
+  const getPublishedCollections = async () => {
     try {
 
       const response = await fetch('http://localhost:5000/api/collections/')
@@ -17,9 +17,7 @@ const Page: NextPageWithLayout = memo(() => {
         throw new Error(`Response status: ${response.status}`)
       }
       const json = await response.json()
-      console.log(json);
       
-      console.log(json.rows[0])
       setCollections((json.rows))
     } catch (error) {
       console.log(error)
@@ -27,21 +25,20 @@ const Page: NextPageWithLayout = memo(() => {
   }
 
   useEffect(() => {
-    getData()
+    getPublishedCollections()
   }, [])
 
   return (
     <>
-          hello
           {collections && <CollectionsList collectionsList={collections}/>} 
     </>
   );
 });
 
-Page.getLayout = function getLayout(page: ReactElement) {
-  return (
-    <RootLayout>{page}</RootLayout>
-  );
-};
+// Page.getLayout = function getLayout(page: ReactElement) {
+//   return (
+//     <RootLayout>{page}</RootLayout>
+//   );
+// };
 
 export default Page;
