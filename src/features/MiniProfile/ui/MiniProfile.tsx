@@ -4,7 +4,7 @@ import { Button, ButtonShape, ButtonVariant } from '@/shared/ui/Button/Button'
 import { AppLink } from '@/shared/ui/AppLink/AppLink'
 import { useState } from 'react'
 import { useAppDispatch } from '@/app/store/hooks'
-import { userActions, userReducer } from '@/entities/user'
+import { userActions } from '@/entities/user'
 
 type MiniProfileProps = {
     className?: string
@@ -35,23 +35,37 @@ export const MiniProfile = (props: MiniProfileProps) => {
             </Button>
             {isShow &&
                 <div className={styles.menu}>
-                    <AppLink
-                        href={'#'}
+                    <Button
+                        variant={ButtonVariant.CLEAR}
+                        shape={ButtonShape.TEXT}
                         className={cn(styles.fullWidth, styles.option)}
+                        disabled
                     >
-                        Настройки
-                    </AppLink>
-                    <AppLink
-                        href={'/'}
+                        <AppLink
+                            href={'#'}
+                        >
+                            Настройки
+                        </AppLink>
+                    </Button>
+                    <Button
+                        variant={ButtonVariant.CLEAR}
+                        shape={ButtonShape.TEXT}
                         className={cn(styles.fullWidth, styles.option)}
+                        disabled
                     >
-                        Мои коллекции
-                    </AppLink>
+                        <AppLink
+                            href={'/'}
+                            className={cn(styles.fullWidth, styles.option)}
+                        >
+                            Мои коллекции
+                        </AppLink>
+                    </Button>
+
                     <Button
                         onClick={onClickLogout}
                         variant={ButtonVariant.CLEAR}
                         shape={ButtonShape.TEXT}
-                        className={cn(styles.fullWidth, styles.option, styles.logout)}
+                        className={cn(styles.fullWidth, styles.option)}
                     >
                         Выйти
                     </Button>

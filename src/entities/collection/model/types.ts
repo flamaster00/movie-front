@@ -13,7 +13,14 @@ export type TCollection = {
     movies?: TMoviesInCollection
 }
 
-export type TNewCollection = Omit<TCollection, 'id' | 'views' |'likes' >
+export type TNewCollection = {
+    published: boolean,
+    title: string,
+    description: string,
+    image: File,
+    userId: number,
+    movies?: TMoviesInCollection
+}
 
 export type TGetAllCollectionsQuery = {
     rows: number,

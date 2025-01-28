@@ -15,12 +15,8 @@ const collectionApi = backendApi.injectEndpoints({
             })
         }),
 
-        getMoviesInCollection: build.query({
-            query: (id) => ({
-                url:`/api/movies/${id}`
-            })
-        })
+        
     }),
 });
 
-export const {useGetAllCollectionsQuery, useGetCollectionByIdQuery, useGetMoviesInCollectionQuery} = collectionApi
+export const {useGetAllCollectionsQuery, useGetCollectionByIdQuery} = collectionApi
