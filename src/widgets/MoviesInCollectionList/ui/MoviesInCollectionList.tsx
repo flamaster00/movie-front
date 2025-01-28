@@ -1,9 +1,8 @@
 'use client'
 import cn from 'classnames'
 import styles from './MoviesInCollectionList.module.scss'
-import { backendBaseUrl } from '@/shared/config/backend'
-import { MoviePreview, TMovie } from '@/entities/movie'
-import { useEffect, useState } from 'react'
+import { MoviePreview, useGetMoviesInCollectionQuery } from '@/entities/movie'
+import { Loader } from '@/shared/ui/Loader/Loader'
 
 type MoviesInCollectionListProps = {
     className?: string,
@@ -12,35 +11,24 @@ type MoviesInCollectionListProps = {
 
 export const MoviesInCollectionList = (props: MoviesInCollectionListProps) => {
     const { className, id } = props
-    const [moviesId, setMoviesId] = useState<TMovie[] | []>([])
+    const {isError, isLoading, data } = useGetMoviesInCollectionQuery(id)
 
-    const getMovies = async (id: string) => {
-        try {
-            const response = await fetch(`${backendBaseUrl}/api/movies/${id}`)
-            const data = await response.json()
-            setMoviesId(data.rows)
-            return data
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    if (isLoading) return <Loader />
 
-    const list = moviesId.map(el => (
+    // TODO обработка ошибки
+    if (isError) return <p>Ошибка загрузки.</p>
+
+    if (!data) return <p>Кино и сериалы в коллекции не найдены</p>
+
+    const list = data.rows.map(el => (
         <MoviePreview id={el.kinopoiskId} key={el.kinopoiskId} />
     ))
-
-    useEffect(() => {
-        if (id) {
-            getMovies(id)
-        }
-    }, [id])
-
 
     return (
         <div
             className={cn(styles.MoviesInCollectionList, className)}
         >
-            {moviesId && list}
+            {data && list}
         </div>
     )
 }

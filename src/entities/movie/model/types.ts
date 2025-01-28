@@ -80,3 +80,17 @@ export type TGenre = {
 export type TMovieId = TKPMovie['kinopoiskId'] | TMovieByKeyword['filmId']
 
 export type TMoviesInCollection = TMovieId[]
+
+export type TMovieInDB = {
+  id: number,
+  kinopoiskId: number,
+  orderId: number,
+  createdAt: Date,
+  updatedAt: Date,
+  collectionId: string
+}
+
+export type TGetMoviesByCollectionIdResponse = {
+  count: number,
+  rows: TMovieInDB[]
+}
