@@ -7,6 +7,8 @@ import { Badge } from '@/shared/ui/Badge/Badge'
 import { TCollection } from '../../model/types'
 import { useGetCollectionByIdQuery } from '../../api/collectionQuery'
 import { Loader } from '@/shared/ui/Loader/Loader'
+import { Button } from '@/shared/ui/Button/Button'
+import { AppLink } from '@/shared/ui/AppLink/AppLink'
 
 type CollectionProps = {
     className?: string
@@ -22,7 +24,18 @@ export const Collection = (props: CollectionProps) => {
 
     if (isError) return <p>Ошибка загрузки коллекции</p>
 
-    if (!collection) return <p>Коллекция не найдена</p>
+    if (!collection) {
+        return (
+            <div className={styles.notFound}>
+                <p>Коллекция не найдена</p>
+                <Button>
+                    <AppLink href={'/'}>
+                        На главную
+                    </AppLink>
+                </Button>
+            </div>
+        )
+    }
 
     let imgUrl
     if (collection?.image) {
