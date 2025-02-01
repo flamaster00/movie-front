@@ -3,8 +3,8 @@ import styles from './MiniProfile.module.scss'
 import { Button, ButtonShape, ButtonVariant } from '@/shared/ui/Button/Button'
 import { AppLink } from '@/shared/ui/AppLink/AppLink'
 import { useState } from 'react'
-import { useAppDispatch } from '@/app/store/hooks'
-import { userActions } from '@/entities/user'
+import { useAppDispatch, useAppSelector } from '@/app/store/hooks'
+import { getUsername, userActions } from '@/entities/user'
 
 type MiniProfileProps = {
     className?: string
@@ -13,6 +13,11 @@ type MiniProfileProps = {
 export const MiniProfile = (props: MiniProfileProps) => {
     const { className } = props
     const [isShow, setIsShow] = useState<boolean>(false)
+    const username = useAppSelector(getUsername)
+        
+    if (!username) return null
+
+    const usernameLetter = username[0].toUpperCase()
 
     const dispatch = useAppDispatch()
 
@@ -31,7 +36,7 @@ export const MiniProfile = (props: MiniProfileProps) => {
                 shape={ButtonShape.ROUND}
                 onClick={toggleMenu}
             >
-                U
+                {usernameLetter}
             </Button>
             {isShow &&
                 <div className={styles.menu}>

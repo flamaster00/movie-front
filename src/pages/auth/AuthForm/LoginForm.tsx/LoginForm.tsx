@@ -118,7 +118,8 @@ const LoginForm = (props: LoginFormProps) => {
                                 minLength: {
                                     value: 4,
                                     message: 'Минимум 4 символа'
-                                }
+                                },
+                                validate: (value) => { return !!value.trim() }
                             })}
                     />
                     {errors.username && <span className={styles.errorText}>{errors.username.message}</span>}
