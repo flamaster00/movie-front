@@ -1,18 +1,25 @@
 .loginForm {
     display: flex;
     flex-direction: column;
+    justify-items: flex-start;
     gap: 1rem;
+
+    position: relative;
 }
 
-.loginInput {
+.loginInput, .passwordInput {
     all: unset;
     border: 1px solid var(--color-border-default);
     border-radius: var(--border-radius-s);
 
     height: 40px;
-    width: 300px;
+    min-width: 300px;
 
     padding: 0 20px;
+}
+
+.passwordInput {
+    padding-right: 2.5em;
 }
 
 .submitWrapper {
@@ -47,9 +54,64 @@
 }
 
 .errorText {
-    font-size: xx-small;
+    font: var(--font-xs);
     color: red;
 }
 
+.responseError {
+    position: absolute;
+    right: 0;
+    bottom: -3rem;
+    width: 100%;
+    
+    & p {
+        font: var(--font-m);
+        color: black;
+        padding: 0.5em;
+        text-align: center;
+        
+        background-color: var(--color-status-error-default);
+        border-radius: var(--border-radius-s);
+    }
+}
 
+.inputContainer {
+    position: relative;
+}
 
+.showPasswordBtn {
+    position: absolute;
+    right: 0.5em;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.showPasswordBtnIcon {
+    fill: var(--color-foreground-muted);
+    height: var(--font-line-s);
+    width: var(--font-line-s);
+}
+
+.show {
+    fill: var(--color-foreground-default);
+}
+
+.successMsg {
+    position: absolute;
+    right: 0;
+    bottom: -3rem;
+    width: 100%;
+}
+
+.successText {
+    color: black;
+    padding: 0.5rem;
+
+    border-radius: var(--border-radius-s);
+    background: var(--color-status-success-default);
+    text-align: center;
+}
+
+.inputError {
+    border-color: var(--color-status-error-default);
+}

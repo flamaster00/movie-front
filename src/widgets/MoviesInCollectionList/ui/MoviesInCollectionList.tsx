@@ -21,7 +21,7 @@ export const MoviesInCollectionList = (props: MoviesInCollectionListProps) => {
     if (!data) return <p>Кино и сериалы в коллекции не найдены</p>
 
     const list = data.rows.map(el => (
-        <MoviePreview id={el.kinopoiskId} key={el.kinopoiskId} />
+        <MoviePreview className={styles.moviePreview} id={el.kinopoiskId} key={el.kinopoiskId} />
     ))
 
     return (

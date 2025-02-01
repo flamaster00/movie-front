@@ -1,8 +1,9 @@
 import { jwtDecode } from "jwt-decode";
 import { UserEndpoints } from "@/shared/api/routes";
-import { TLoginRequest, TRegistrationRequest, TUser, TUserApiResponse } from "../model/types/types";
+import { TLoginRequest, TRegistrationRequest, TUser, TUserApiResponse, TUserWithRole } from "../model/types/types";
 import { backendBaseUrl } from "@/shared/config/backend";
 import { LOCALSTORAGE_USER_KEY } from "@/shared/consts/consts";
+import { TResponseError } from "../model/types/errorTypes";
 
 
 
@@ -17,15 +18,25 @@ export const registration = async (data: TRegistrationRequest) => {
             body: formData
         })
         if (!response.ok) {
-            throw new Error(response.statusText)
+            let errorResponse: TResponseError;
+            try {
+                errorResponse = await response.json() as TResponseError;
+            } catch (jsonError) {
+                errorResponse = { message: response.statusText, code: response.status };
+            }
+            throw new Error(JSON.stringify(errorResponse))
         }
         const { token } = await response.json() as TUserApiResponse
         localStorage.setItem('token', token)
-        const user: TUser = jwtDecode(token)
+        const user: TUserWithRole = jwtDecode(token)
         return user
 
     } catch (error) {
-        console.log(error);
+        if (error instanceof Error) {
+            throw error;
+        } else {
+            throw new Error('Непредвиденная ошибка');
+        }
     }
 
 }
@@ -41,15 +52,25 @@ export const login = async (data: TLoginRequest) => {
             body: formData
         })
         if (!response.ok) {
-            throw new Error(response.statusText)
+            let errorResponse: TResponseError;
+            try {
+                errorResponse = await response.json() as TResponseError;
+            } catch (jsonError) {
+                errorResponse = { message: response.statusText, code: response.status };
+            }
+            throw new Error(JSON.stringify(errorResponse))
         }
         const { token } = await response.json() as TUserApiResponse
         localStorage.setItem('token', token)
-        const user: TUser = jwtDecode(token)
+        const user: TUserWithRole = jwtDecode(token)
         return user
 
     } catch (error) {
-        console.log(error);
+        if (error instanceof Error) {
+            throw error;
+        } else {
+            throw new Error('Непредвиденная ошибка');
+        }
     }
 }
 
@@ -68,9 +89,9 @@ export const check = async () => {
         }
         const { token } = await response.json() as TUserApiResponse
         localStorage.setItem('token', token)
-        const user: TUser = jwtDecode(token)
+        const user: TUserWithRole = jwtDecode(token)
         return user
-        
+
     } catch (error) {
         console.log(error);
     }

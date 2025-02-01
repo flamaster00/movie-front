@@ -23,7 +23,7 @@ export type TCreateNewCollectionForm = {
   publish: boolean,
 }
 
-export const CreateCollectionPage = (props: CreateCollectionPageProps) => {
+const CreateCollectionPage = (props: CreateCollectionPageProps) => {
   const { className } = props
   const [moviesInCollection, setMoviesInCollection] = useState<TMoviesInCollection>([])
 
@@ -79,3 +79,5 @@ export const CreateCollectionPage = (props: CreateCollectionPageProps) => {
     </div>
   )
 }
+
+export default CreateCollectionPage;

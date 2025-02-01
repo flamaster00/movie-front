@@ -8,7 +8,7 @@ type CollectionPage = {
     
 }
 
-export const CollectionPage = (props: CollectionPage) => {
+const CollectionPage = (props: CollectionPage) => {
     const params = useParams()
     // TODO сделать обработку undefined и массива
     const id = params?.collectionId as string
@@ -24,3 +24,5 @@ export const CollectionPage = (props: CollectionPage) => {
         </>
     )
 }
+
+export default CollectionPage;

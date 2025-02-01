@@ -5,7 +5,7 @@ import { backendBaseUrl } from '@/shared/config/backend'
 import { Button, ButtonVariant } from '@/shared/ui/Button/Button'
 import { ChangeEvent, useState } from 'react'
 import { useAppSelector } from '@/app/store/hooks'
-import { getUserAuthData, getUsername } from '@/entities/user'
+import { getUserAuthData } from '@/entities/user'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { TNewCollection } from '@/entities/collection'
 
@@ -23,7 +23,6 @@ type TCreateNewCollectionForm = {
 
 export const CreateNewCollection = (props: CreateNewCollectionProps) => {
   const { className, saveCollection } = props
-  const username = useAppSelector(getUsername)
   const authData = useAppSelector(getUserAuthData)
 
   const { register, handleSubmit, formState: { errors } } = useForm<TCreateNewCollectionForm>()
@@ -79,8 +78,8 @@ export const CreateNewCollection = (props: CreateNewCollectionProps) => {
           />
         </div>
         <div className={cn(styles.author)}>
-          {username ?
-            <p>{username}</p>
+          {authData?.username ?
+            <p>{authData.username}</p>
             : <p>Автор</p>
           }
         </div>
@@ -101,7 +100,6 @@ export const CreateNewCollection = (props: CreateNewCollectionProps) => {
             placeholder='Описание'
             rows={6}
             {...register('description', { required: 'Поле обязательно' })}
-            onKeyDown={onEnterPressPreventNewLine}
           />
         </div>
       </div>

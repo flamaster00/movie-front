@@ -1,3 +1,3 @@
-import { CreateCollectionPage } from "./CreateCollectionPage";
+import CreateCollectionPage from "./CreateCollectionPage";
 
 export default CreateCollectionPage;
