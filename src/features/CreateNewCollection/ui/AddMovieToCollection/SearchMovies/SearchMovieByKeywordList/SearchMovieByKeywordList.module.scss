@@ -1,0 +1,34 @@
+.SearchMovieByKeywordList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(calc(200px + 1.1rem), 1fr));
+    align-items: start;
+    justify-items: center;
+}
+
+.listItem {
+    height: 100%;
+    padding: 0.5em;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid transparent;
+    border-radius: var(--border-radius-m);
+    cursor: pointer;
+
+    &:hover {
+        border-color: var(--color-border-default);
+    }
+}
+
+.error {
+    background: var(--color-status-error-default);
+    padding: 1rem;
+    border-radius: var(--border-radius-s);
+    color: black;
+}
+
+.loader {
+    display: grid;
+    place-content: center;
+}

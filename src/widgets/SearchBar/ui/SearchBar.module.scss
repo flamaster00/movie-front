@@ -4,8 +4,11 @@
 }
 
 Input.input {
-    padding-right: calc(0.5rem + 24px + 24px + 0.2rem);
+    padding-right: calc(0.5rem + 24px + 0.2rem);
     width: 100%;
+}
+Input.inputPaddingWithSearchIcon {
+    padding-right: calc(0.5rem + 24px + 24px + 0.2rem);
 }
 
 .iconButton{
@@ -14,6 +17,10 @@ Input.input {
 
 .clearIcon {
     top: 0.5rem;
+    right: calc(0.5rem + 0.2rem);
+}
+
+.clearIconPaddingWithSearchIcon {
     right: calc(0.5rem + var(--icon-size-24) + 0.2rem);
 }
 
@@ -28,6 +35,8 @@ Input.input {
     width: var(--icon-size-16);
     height: var(--icon-size-16);
 }
+
+
 
 .visuallyHidden {
     visibility: hidden;

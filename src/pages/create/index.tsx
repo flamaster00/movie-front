@@ -1,3 +1,3 @@
-import CreateCollectionPage from "./CreateCollectionPage";
+import CreateNewCollectionPage from "./CreateNewCollectionPage";
 
-export default CreateCollectionPage;
+export default CreateNewCollectionPage

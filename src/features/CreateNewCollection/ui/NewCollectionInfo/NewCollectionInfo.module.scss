@@ -1,7 +1,9 @@
 @import "@/app/styles/_mixins.scss";
 
-.CreateNewCollection {
+.NewCollectionInfo {
     padding: 1rem;
+    max-width: 30vw;
+    min-width: 400px;
 }
 
 .Collection {
@@ -108,11 +110,14 @@
 }
 
 .inputErrorText {
-    color: var(--color-status-error-default);
-    font: var(--font-s);
     position: absolute;
     right: 0.5rem;
     top: 0.5rem;
+}
+
+.errorText {
+    color: var(--color-status-error-default);
+    font: var(--font-s);
 }
 
 .authError {

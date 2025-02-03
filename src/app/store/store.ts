@@ -1,4 +1,5 @@
 import { userReducer } from '@/entities/user'
+import { newCollectionReducer } from '@/features/CreateNewCollection'
 import { backendApi } from '@/shared/api/backendAPI'
 import { kinopoiskApi } from '@/shared/api/kinopoiskApi'
 import { configureStore } from '@reduxjs/toolkit'
@@ -8,7 +9,8 @@ export const makeStore = () => {
         reducer: {
           user: userReducer,
           [backendApi.reducerPath]: backendApi.reducer,
-          [kinopoiskApi.reducerPath]: kinopoiskApi.reducer
+          [kinopoiskApi.reducerPath]: kinopoiskApi.reducer,
+          newCollection: newCollectionReducer
         },
         middleware: (getDefaultMiddleware) =>
           getDefaultMiddleware().concat(backendApi.middleware).concat(kinopoiskApi.middleware),

@@ -3,7 +3,7 @@ import cn from 'classnames'
 import styles from './SearchBar.module.scss'
 import { Input } from '@/shared/ui/Input/Input'
 import { Button, ButtonShape, ButtonVariant } from '@/shared/ui/Button/Button'
-import IconClose from '@/shared/static/icons/icon_close.svg'
+import IconClear from '@/shared/static/icons/icon_close.svg'
 import IconSearch from '@/shared/static/icons/icon_search.svg'
 import { InputHTMLAttributes, MouseEventHandler, useCallback, useState } from 'react'
 import classNames from 'classnames'
@@ -14,12 +14,13 @@ type TSearchBarProps = {
   className?: string,
   placeholder?: string,
   value?: string,
-  onChange?: (title: string) => void
-  clear?: () => void
+  onChange?: (title: string) => void,
+  clear?: () => void,
+  searchIcon?: boolean
 } & HTMLInputProps
 
 export const SearchBar = (props: TSearchBarProps) => {
-  const { placeholder, value, onChange, clear, className, ...otherProps } = props
+  const { placeholder, value, onChange, clear, className, searchIcon, ...otherProps } = props
 
   // const [searchValue, setSearchValue] = useState<string>('')
 
@@ -40,30 +41,32 @@ export const SearchBar = (props: TSearchBarProps) => {
         type="search"
         name='search'
         placeholder={placeholder}
-        className={cn(styles.input)}
+        className={cn(styles.input, {[styles.inputPaddingWithSearchIcon]: searchIcon})}
         value={value}
         onChange={onChange}
         {...otherProps}
       />
 
       {value && <Button
-        className={cn(styles.iconButton, styles.clearIcon)}
+        className={cn(styles.iconButton, styles.clearIcon, {[styles.clearIconPaddingWithSearchIcon]: searchIcon})}
         variant={ButtonVariant.CLEAR}
         shape={ButtonShape.ICON}
         onClick={clear}
       >
-        <IconClose className={styles.icon} />
+        <IconClear className={styles.icon} />
       </Button>}
 
-      <Button
-        type='submit'
-        onClick={onclick}
-        className={cn(styles.iconButton, styles.searchIcon)}
-        variant={ButtonVariant.CLEAR}
-        shape={ButtonShape.ICON}
-      >
-        <IconSearch className={styles.icon} />
-      </Button>
+      {searchIcon &&
+        <Button
+          type='submit'
+          onClick={onclick}
+          className={cn(styles.iconButton, styles.searchIcon)}
+          variant={ButtonVariant.CLEAR}
+          shape={ButtonShape.ICON}
+        >
+          <IconSearch className={styles.icon} />
+        </Button>
+      }
     </div>
   )
 }

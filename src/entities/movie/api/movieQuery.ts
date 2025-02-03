@@ -1,10 +1,10 @@
 import { kinopoiskApi } from "@/shared/api/kinopoiskApi";
-import { TGetMoviesByCollectionIdResponse, TKPMovie, TMovieId, TMovieInDB, TMoviesInCollection, TSearchByKeywordResponse } from "../model/types";
+import { TGetMoviesByCollectionIdResponse, TKPMovie, TMovieInDB, TSearchByKeywordResponse } from "../model/types";
 import { backendApi } from "@/shared/api/backendAPI";
 
 const movieApiKP = kinopoiskApi.injectEndpoints({
     endpoints: (build) => ({
-        getMovieById: build.query<TKPMovie, TMovieId>({
+        getMovieById: build.query<TKPMovie, number>({
             query: (movieId) => ({
                 url: `/api/v2.2/films/${movieId}`
             }),

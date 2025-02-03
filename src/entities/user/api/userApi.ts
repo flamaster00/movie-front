@@ -3,9 +3,7 @@ import { UserEndpoints } from "@/shared/api/routes";
 import { TLoginRequest, TRegistrationRequest, TUser, TUserApiResponse, TUserWithRole } from "../model/types/types";
 import { backendBaseUrl } from "@/shared/config/backend";
 import { LOCALSTORAGE_USER_KEY } from "@/shared/consts/consts";
-import { TResponseError } from "../model/types/errorTypes";
-
-
+import { TResponseError } from "@/shared/types/errorTypes";
 
 export const registration = async (data: TRegistrationRequest) => {
     try {

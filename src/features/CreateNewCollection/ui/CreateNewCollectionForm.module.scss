@@ -1,0 +1,22 @@
+.CreateNewCollectionForm {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto 1fr;
+    gap: 2rem;
+
+    grid-template-areas: 
+    'a b'
+    'a c';
+}
+
+.info {
+    grid-area: a;
+}
+
+.search {
+    grid-area: b;
+}
+
+.list {
+    grid-area: c;
+}
