@@ -4,7 +4,7 @@ export type TNewCollectionInfo = {
     title: string,
     description: string,
     published: boolean,
-    filelist: FileList
+    filelist: FileList | null
 }
 
 export type TMoviesIdArr = [TMovieByKeyword['filmId']]
@@ -13,7 +13,7 @@ export type TNewCollectionFormData = {
     title: string,
     description: string,
     published: string,
-    image: File,
+    image: File | null,
     userId: string,
     movies: string
 }

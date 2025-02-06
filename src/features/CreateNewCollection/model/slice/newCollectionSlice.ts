@@ -1,24 +1,34 @@
 import { TMovieByKeyword } from "@/entities/movie";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, SerializedError } from "@reduxjs/toolkit";
+import { createNewCollection } from "../services/createNewCollection";
+import { TResponseError } from "@/shared/types/errorTypes";
 
-type newCollectionSliceState = {
+type TNewCollection = {
     published: boolean,
     title: string,
     description: string,
     movies: TMovieByKeyword[]
-    image?: File,
-    userId?: number,
+    image: File | null,
+    userId: number | undefined,
 }
 
-type TNewCollectionInfo = Pick<newCollectionSliceState, 'title' | 'description' | 'published' | 'image'>
+type TNewCollectionSliceState = {
+    collection: TNewCollection,
+    loading: boolean,
+    error: TResponseError | SerializedError | null,
+}
 
-
-
-const initialState: newCollectionSliceState = {
-    published: false,
-    title: '',
-    description: '',
-    movies: [],
+const initialState: TNewCollectionSliceState = {
+    collection: {
+        published: false,
+        title: '',
+        description: '',
+        movies: [],
+        image: null,
+        userId: undefined
+    },
+    loading: false,
+    error: null
 }
 
 const newCollectionSlice = createSlice({
@@ -26,46 +36,43 @@ const newCollectionSlice = createSlice({
     initialState,
     reducers: {
 
-        setPublished: (state, action: PayloadAction<newCollectionSliceState['published']>) => {
-            state = { ...state, published: action.payload }
-        },
-
-        setTitle: (state, action: PayloadAction<newCollectionSliceState['title']>) => {
-            state = { ...state, title: action.payload }
-        },
-
-        setDescription: (state, action: PayloadAction<newCollectionSliceState['description']>) => {
-            state = { ...state, description: action.payload }
-        },
-        setImage: (state, action: PayloadAction<newCollectionSliceState['image']>) => {
-            state = { ...state, image: action.payload }
-        },
-
-        setMovies: (state, action: PayloadAction<newCollectionSliceState['movies']>) => {
-            state = { ...state, movies: action.payload }
+        setMovies: (state, action: PayloadAction<TNewCollectionSliceState['collection']['movies']>) => {
+            state.collection.movies = action.payload
         },
 
         addMovie: (state, action: PayloadAction<TMovieByKeyword>) => {
-            state.movies.unshift(action.payload)
+            state.collection.movies.unshift(action.payload)
         },
 
         removeMovie: (state, action: PayloadAction<TMovieByKeyword>) => {
-            state.movies = state.movies.filter(movie => movie.filmId !== action.payload.filmId)
+            state.collection.movies = state.collection.movies.filter(movie => movie.filmId !== action.payload.filmId)
         },
 
-        setUserId: (state, action: PayloadAction<newCollectionSliceState['userId']>) => {
-            state = { ...state, userId: action.payload }
-        },
-
-        setCollectionInfo: (state, action: PayloadAction<TNewCollectionInfo>) => {
-            const { title, description, published, image } = action.payload
-            state.title = title
-            state.description = description
-            state.published = published
-            state.image = image
-            console.log(state);
-            
+        setCollectionInfo: (state, action: PayloadAction<Partial<TNewCollection>>) => {
+            state.collection = {
+                ...state.collection,
+                ...action.payload
+            }
         }
+    },
+    extraReducers: (builder) => {
+        builder
+        .addCase(createNewCollection.pending, (state) => {
+            state.loading = true
+            state.error = null
+        })
+        .addCase(createNewCollection.fulfilled, (state) => {
+            state.loading = false
+            state.collection = initialState.collection
+        })
+        .addCase(createNewCollection.rejected, (state, action) => {
+            state.loading = false
+            if (action.payload) {
+                state.error = action.payload as TResponseError
+            } else {
+                state.error = action.error
+            }
+        })
     }
 })
 

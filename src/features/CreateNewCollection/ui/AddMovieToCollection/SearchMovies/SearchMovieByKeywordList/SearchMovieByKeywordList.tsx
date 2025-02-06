@@ -15,7 +15,6 @@ type SearchMovieByKeywordListProps = {
 export const SearchMovieByKeywordList = (props: SearchMovieByKeywordListProps) => {
     const { className, keyword } = props
 
-    if (!keyword) return null
     const dispatch = useAppDispatch()
     const movies = useAppSelector(getNewCollectionMovies)
 
@@ -27,25 +26,6 @@ export const SearchMovieByKeywordList = (props: SearchMovieByKeywordListProps) =
         if (movieInCollection) return;
         dispatch(newCollectionActions.addMovie(newMovie))
     }
-
-    const filmsList = films?.map((movie) => (
-        <li
-            className={styles.listItem}
-            key={movie.filmId}
-        >
-            <Button
-                variant={ButtonVariant.CLEAR}
-                shape={ButtonShape.TEXT}
-                onClick={() => addMovie(movie)}
-            >
-                <MovieByKeywordPreview
-                    movie={movie}
-                    className={cn(styles.movie)}
-                />
-            </Button>
-            <Button className={styles.addBtn}>Добавить</Button>
-        </li>
-    ))
 
     if (isError) {
         if ('status' in error) {
@@ -62,7 +42,31 @@ export const SearchMovieByKeywordList = (props: SearchMovieByKeywordListProps) =
 
     return (
         <ul className={cn(styles.SearchMovieByKeywordList, className)}>
-            {films && filmsList}
+            {films &&
+                films?.map((movie) => (
+                    <li
+                        className={styles.listItem}
+                        key={movie.filmId}
+                    >
+                        <Button
+                            variant={ButtonVariant.CLEAR}
+                            shape={ButtonShape.TEXT}
+                            onClick={() => addMovie(movie)}
+                        >
+                            <MovieByKeywordPreview
+                                movie={movie}
+                                className={cn(styles.movie)}
+                            />
+                        </Button>
+                        <Button
+                            className={styles.addBtn}
+                            onClick={() => addMovie(movie)}
+                        >
+                            Добавить
+                        </Button>
+                    </li>
+                ))
+            }
         </ul>
     )
 }

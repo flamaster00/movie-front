@@ -4,8 +4,12 @@
     padding: 0.5rem 1rem;
     color: var(--foreground);
     background: var(--color-background-surface2);
-    border: 1px solid var(--color-border-default);
+    border: 1px solid var(--color-border-soft);
     border-radius: var(--border-radius-s);
+
+    &:focus {
+        border-color: var(--color-border-default);
+    }
 }
 
 .fullWidth {

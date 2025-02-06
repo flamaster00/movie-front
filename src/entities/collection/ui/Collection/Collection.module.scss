@@ -48,6 +48,7 @@
 .description {
     grid-area: description;
     @include clamp-4-lines;
+    white-space: pre-wrap;
 }
 
 .likes {

@@ -4,11 +4,12 @@ import cn from 'classnames'
 import styles from './LoginForm.module.scss'
 import React, { useEffect, useState } from 'react'
 import { useRouter } from "next/navigation"
-import { login, registration, TRegistrationRequest, TResponseError, userActions } from "@/entities/user"
+import { login, registration, TRegistrationRequest, userActions } from "@/entities/user"
 import { useAppDispatch } from "@/app/store/hooks"
 import IconShown from '@/shared/static/icons/icon_visibility.svg'
 import IconNotShown from '@/shared/static/icons/icon_visibility_off.svg'
 import { setTimeout } from "timers"
+import { TResponseError } from "@/shared/types/errorTypes"
 
 // TODO refactor to register and login
 type Inputs = TRegistrationRequest

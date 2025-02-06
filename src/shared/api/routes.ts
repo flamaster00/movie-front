@@ -5,7 +5,7 @@ export const enum ApiRoutes{
 }
 export const enum CollectionsEndpoints{
     GET_COLLECTIONS_ENDPOINT = `${ApiRoutes.COLLECTIONS_ROUTE}/`,
-    CREATE_COLLECTION_ENDPOINT = `${ApiRoutes.COLLECTIONS_ROUTE}/create`
+    CREATE_COLLECTION_ENDPOINT = `${ApiRoutes.COLLECTIONS_ROUTE}/`
 }
 
 export const enum UserEndpoints {
@@ -16,4 +16,11 @@ export const enum UserEndpoints {
 
 export const enum MoviesEndpoints {
     GET_MOVIES_BY_COLLECTION_ID = `${ApiRoutes.MOVIES_ROUTE}/`
+}
+
+export const enum PageRoutes {
+    MAIN = '/',
+    CREATE_COLLECTION = '/create',
+    COLLECTIONS = '/collections',
+    AUTH = '/auth'
 }

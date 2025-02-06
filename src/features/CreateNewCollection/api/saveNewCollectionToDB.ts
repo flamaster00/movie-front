@@ -1,5 +1,5 @@
-import { backendBaseUrl } from "@/shared/config/backend";
 import { CollectionsEndpoints } from "@/shared/api/routes";
+import { backendBaseUrl } from "@/shared/config/backend";
 import { LOCALSTORAGE_USER_TOKEN } from "@/shared/consts/consts";
 import { TResponseError } from "@/shared/types/errorTypes";
 
@@ -23,7 +23,6 @@ export const saveNewCollectionToDB = async (newCollection: FormData) => {
             throw new Error(JSON.stringify(errorResponse))
         }
         const collection = await response.json()
-        console.log(collection);
         return collection
 
     } catch (error) {

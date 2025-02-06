@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import styles from './createNewCollectionForm.module.scss'
 import { NewCollectionInfo } from './NewCollectionInfo/NewCollectionInfo'
-import { useAppSelector } from '@/app/store/hooks'
+import { useAppDispatch, useAppSelector } from '@/app/store/hooks'
 import { getUserAuthData } from '@/entities/user'
 import { AddMovieToCollection } from './AddMovieToCollection/AddMovieToCollection'
 import { getNewCollectionMovies } from '../model/selectors/getNewCollectionMovies/getNewCollectionMovies'
@@ -9,6 +9,13 @@ import { MoviesInNewCollectionList } from './MoviesInNewCollectionList/MoviesInN
 import { TNewCollectionInfo } from '../model/types/types'
 import { transformToFormData } from '../lib/utils'
 import { saveNewCollectionToDB } from '../api/saveNewCollectionToDB'
+import { useState } from 'react'
+import { TCollection } from '@/entities/collection'
+import { useRouter } from 'next/router'
+import { newCollectionActions } from '../model/slice/newCollectionSlice'
+import { PageRoutes } from '@/shared/api/routes'
+import { TResponseError } from '@/shared/types/errorTypes'
+import { createNewCollection } from '../model/services/createNewCollection'
 
 type CreateNewCollectionFormProps = {
     className?: string
@@ -16,14 +23,11 @@ type CreateNewCollectionFormProps = {
 
 export const CreateNewCollectionForm = (props: CreateNewCollectionFormProps) => {
     const { className } = props
-    const userAuthData = useAppSelector(getUserAuthData)
+
+
     const selectedMovies = useAppSelector(getNewCollectionMovies)
 
-    const saveCollection = async (newCollectionInfo: TNewCollectionInfo) => {
-        if (userAuthData === undefined) return
-        const newCollection = transformToFormData(newCollectionInfo, selectedMovies, userAuthData?.id)
-        await saveNewCollectionToDB(newCollection)
-    }
+
 
     return (
         <div
@@ -31,14 +35,9 @@ export const CreateNewCollectionForm = (props: CreateNewCollectionFormProps) => 
         >
             <NewCollectionInfo
                 className={styles.info}
-                username={userAuthData?.username}
-                saveCollection={saveCollection}
             />
             <AddMovieToCollection className={styles.search} />
-            <MoviesInNewCollectionList
-                className={styles.list}
-                movies={selectedMovies}
-            />
+            <MoviesInNewCollectionList className={styles.list} />
         </div>
     )
 }

@@ -6,7 +6,7 @@ import {
     useGetCollectionByIdQuery,
 } from "./api/collectionQuery";
 
-import type { TCollection, TNewCollection, TGetCollectionById, TGetAllCollectionsQuery } from './model/types'
+import type { TCollection, TGetCollectionById, TGetAllCollectionsQuery } from './model/types'
 import { Collection } from './ui/Collection/Collection';
 
 export {
@@ -18,7 +18,6 @@ export {
     useGetCollectionByIdQuery,
     // types
     TCollection,
-    TNewCollection, 
     TGetCollectionById,
     TGetAllCollectionsQuery
 }

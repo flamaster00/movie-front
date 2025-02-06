@@ -131,3 +131,22 @@
         border-color: var(--color-status-error-hover);
     }
 }
+
+.successMsg, .errorMsg, .loading {
+    padding: 1em;
+    border-radius: var(--border-radius-s);
+    text-align: end;
+    color: black;
+}
+
+.loading {
+    background-color: var(--color-status-info-default);
+}
+
+.successMsg {
+    background: var(--color-status-success-default);
+}
+
+.errorMsg {
+    background: var(--color-status-error-default);
+}

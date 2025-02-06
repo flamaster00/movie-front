@@ -26,7 +26,7 @@ export const AddMovieToCollection = (props: AddMovieToCollectionProps) => {
             className={cn(styles.AddMovieToCollection, className)}
         >
             <p>Кино и сериалы в коллекции</p>
-            <Button onClick={showSearchMovies}>Добавить</Button>
+            <Button onClick={showSearchMovies} disabled={isShow}>Добавить</Button>
             <SearchMovies show={isShow} closeSearch={hideSearchMovies} />
         </section>
     )
