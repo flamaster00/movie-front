@@ -1,41 +1,16 @@
 'use client'
 import cn from 'classnames'
 import styles from './Collection.module.scss'
-import { useEffect, useState } from 'react'
 import { backendBaseUrl } from '@/shared/config/backend'
-import { Badge } from '@/shared/ui/Badge/Badge'
 import { TCollection } from '../../model/types'
-import { useGetCollectionByIdQuery } from '../../api/collectionQuery'
-import { Loader } from '@/shared/ui/Loader/Loader'
-import { Button } from '@/shared/ui/Button/Button'
-import { AppLink } from '@/shared/ui/AppLink/AppLink'
 
 type CollectionProps = {
     className?: string
-    id: string
+    collection: TCollection,
 }
 
 export const Collection = (props: CollectionProps) => {
-    const { className, id } = props
-
-    const { isLoading, isError, data: collection } = useGetCollectionByIdQuery(Number(id))
-
-    if (isLoading) return <Loader />
-
-    if (isError) return <p>Ошибка загрузки коллекции</p>
-
-    if (!collection) {
-        return (
-            <div className={styles.notFound}>
-                <p>Коллекция не найдена</p>
-                <Button>
-                    <AppLink href={'/'}>
-                        На главную
-                    </AppLink>
-                </Button>
-            </div>
-        )
-    }
+    const { className, collection } = props
 
     let imgUrl
     if (collection?.image) {
