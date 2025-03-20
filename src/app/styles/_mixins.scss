@@ -1,8 +1,8 @@
   // Mixins
-  @mixin clamp-2-lines {
+  @mixin clamp-lines($count) {
     display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
+    -webkit-line-clamp: $count;
+    line-clamp: $count;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }

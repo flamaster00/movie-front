@@ -82,12 +82,12 @@
 .titleTextarea {
     font: var(--font-l);
     display: -webkit-box;
-    @include clamp-2-lines;
+    @include clamp-lines(2);
 }
 
 .descriptionTextarea {
     font: var(--font-m);
-    @include clamp-4-lines;
+    @include clamp-lines(4);
 }
 
 .publish {

@@ -16,11 +16,14 @@ export const MoviesInCollectionList = (props: MoviesInCollectionListProps) => {
             className={cn(styles.MoviesInCollectionList, className)}
         >
             {movies.map(movie => (
-                <li className={styles.listItem}>
+                <li
+                    className={styles.listItem}
+                    key={movie.kinopoiskId}
+                >
                     <MoviePreview
                         className={styles.moviePreview}
                         id={movie.kinopoiskId}
-                        key={movie.kinopoiskId} />
+                    />
                 </li>
             ))}
         </ul>

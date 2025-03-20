@@ -19,11 +19,11 @@
 
 .nameRu {
     font: var(--font-l);
-    @include clamp-3-lines;
+    @include clamp-lines(3);
 }
 
 .nameEn {
-    @include clamp-3-lines;
+    @include clamp-lines(3);
 }
 
 .imageWrapper {

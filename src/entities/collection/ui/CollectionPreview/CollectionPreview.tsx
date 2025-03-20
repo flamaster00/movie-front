@@ -43,9 +43,9 @@ export const CollectionPreview = (props: CollectionPreviewProps) => {
         {collection.user.username}
       </span>
 
-      <p className={cn(styles.name)}>
-        {collection.title}
-      </p>
+        <p className={cn(styles.title)}>
+          {collection.title}
+        </p>
 
     </div>
   )

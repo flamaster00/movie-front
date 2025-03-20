@@ -15,12 +15,6 @@ const CollectionPage = () => {
     const params = useParams()
     // TODO сделать обработку undefined и массива
     const id = params?.collectionId as string
-    console.log(params);
-    const searchParams = useSearchParams()
-    console.log(searchParams);
-    
-    
-    console.log('hooks');
     
     const userAuthData = useAppSelector(getUserAuthData)
 

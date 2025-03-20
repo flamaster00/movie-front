@@ -41,13 +41,13 @@
 
 .title {
     grid-area: title;
-    @include clamp-2-lines;
+    @include clamp-lines(4);
     font: var(--font-l);
 }
 
 .description {
     grid-area: description;
-    @include clamp-4-lines;
+    @include clamp-lines(4);
     white-space: pre-wrap;
 }
 

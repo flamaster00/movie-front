@@ -62,9 +62,9 @@
     padding: 1rem;
 }
 
-.name {
-    padding: 0.5rem 0.5rem;
-    @include clamp-2-lines;
+.title {
+    margin: 0.5rem 0.5rem;
+    @include clamp-lines(2);
 }
 
 .icon {

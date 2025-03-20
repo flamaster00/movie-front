@@ -12,6 +12,7 @@ type MoviePreviewProps = {
 export const MoviePreview = (props: MoviePreviewProps) => {
   const { className, id } = props
   const { isError, isLoading, data: movie } = useGetMovieByIdQuery(id)
+
   if (isLoading) {
     return <p>Loading...</p>
   }
@@ -24,8 +25,8 @@ export const MoviePreview = (props: MoviePreviewProps) => {
     >
       <div className={styles.imageWrapper}>
         <img src={movie?.posterUrlPreview} alt={movie?.nameRu} className={styles.image} />
-        <Badge className={styles.ratingKP}>KP {movie?.ratingKinopoisk}</Badge>
-        <Badge className={styles.ratingIMDB}>IMDB {movie?.ratingImdb}</Badge>
+        <Badge className={styles.ratingKP}>KP {movie?.ratingKinopoisk ?? '0.0'}</Badge>
+        <Badge className={styles.ratingIMDB}>IMDB {movie?.ratingImdb ?? '0.0'}</Badge>
       </div>
       <p className={styles.nameRu}>{movie?.nameRu}</p>
       <p className={styles.nameOriginal}>{movie?.nameOriginal}</p>
