@@ -6,7 +6,7 @@ import { TCollection } from '../../model/types'
 
 type CollectionProps = {
     className?: string
-    collection: TCollection,
+    collection?: TCollection
 }
 
 export const Collection = (props: CollectionProps) => {

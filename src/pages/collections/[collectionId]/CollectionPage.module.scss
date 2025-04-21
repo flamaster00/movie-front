@@ -1,35 +1,35 @@
 .CollectionPage, .isOwnerCollectionPage {
     display: grid;
-    // gap: 1rem;
     align-items: start;
 }
 
 .CollectionPage {
     grid-template-columns: 1fr 2fr;
     display: grid;
-    // gap: 1rem;
     align-items: start;
+    grid-template-areas: 
+    'collection movies'
 }
 
-// .isOwnerCollectionPage {
-//     grid-template-columns: 1fr 2fr;
-//     grid-template-rows: auto 1fr;
-//     grid-template-areas: 
-//     'edit movies'
-//     'collection movies';
-// }
+.isOwnerCollectionPage {
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+    'edit movies'
+    'collection movies';
+}
 
-// .edit {
-//     grid-area: edit;
-//     margin-right: auto;
-//     margin-left: 1rem;
-//     margin-top: 1rem;
-// }
+.edit {
+    grid-area: edit;
+    margin-right: auto;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
 
-// .collection {
-//     grid-area: collection;
-// }
+.collection {
+    grid-area: collection;
+}
 
-// .movies {
-//     grid-area: movies;
-// }
+.movies {
+    grid-area: movies;
+}

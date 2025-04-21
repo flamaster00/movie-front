@@ -1,0 +1,23 @@
+.Image {
+    
+}
+
+.imageWrapper {
+    max-width: 600px;
+    display: inline-block;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: var(--border-radius-xl);
+    background-color: var(--color-background-disabled);
+}
+
+.img {
+    max-width: 100%;
+    object-fit: contain;
+}
+.inputControl {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}

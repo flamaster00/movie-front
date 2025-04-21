@@ -1,0 +1,27 @@
+.Textarea {
+    word-break: break-word;
+    width: 100%;
+    background: none;
+    border: 1px solid var(--color-border-soft);
+    border-radius: var(--border-radius-s);
+    padding: 0.5rem 1rem;
+    resize: vertical;
+    field-sizing: content;
+    min-height: 1rem;
+    outline: none;
+    font: var(--font-m);
+
+    &:focus, :focus-visible {
+        border-color: var(--color-border-default);
+    }
+}
+
+.readonly {
+    border-color: var(--color-border-muted);
+    caret-color: transparent;
+    resize: none;
+
+    &:focus {
+        border-color: var(--color-border-muted);
+    }
+}

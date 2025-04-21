@@ -50,12 +50,11 @@ const CollectionPage = () => {
 
     return (
         <main className={cn(
-            // isOwner ? styles.isOwnerCollectionPage : styles.CollectionPage
-            styles.CollectionPage
+            isOwner ? styles.isOwnerCollectionPage : styles.CollectionPage
         )}>
-            {/* {isOwner &&
+            {isOwner &&
                 <Button className={styles.edit}>Редактировать</Button>
-            } */}
+            }
             <Collection collection={collection} className={styles.collection}/>
             {movies && <MoviesInCollectionList movies={movies.rows} className={styles.movies}/>}
         </main>
